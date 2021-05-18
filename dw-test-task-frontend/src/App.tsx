@@ -8,43 +8,43 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: center;
-background-color: #05054a;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #05054a;
 `;
 
 const Section = styled.button`
-background-color: transparent;
-border: none;
-text-transform: capitalize;
-padding: 15px;
-color: white;
-font-size: 15px;
+  background-color: transparent;
+  border: none;
+  text-transform: capitalize;
+  padding: 15px;
+  color: white;
+  font-size: 15px;
 `;
 
 const Products = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-items: center;
-justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Product = styled.div`
-display: flex;
-flex-direction: column;
-margin: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
 `;
 
 const Image = styled.img`
-width: 300px;
-background-color: #d7d7d4;
+  width: 300px;
+  background-color: #d7d7d4;
 `;
 
 const ProductText = styled.div`
-padding-top: 5px;
+  padding-top: 5px;
 `;
 
 const App = () => {
@@ -60,14 +60,6 @@ const App = () => {
     fetchData();
   }, []);
 
-  const products = productsWithImages.map((product) => (
-            <Product>
-                <Image src={product.image}/>
-                <ProductText>{product.name}</ProductText>
-                <ProductText>{product.color}</ProductText>
-                <ProductText>{product.price.symbol} {product.price.amount}</ProductText>
-            </Product>));
-
   return (
     <Container>
         <Header>
@@ -79,7 +71,13 @@ const App = () => {
             <Section>Shop Instagram</Section>
         </Header>
         <Products>
-            {products}
+            {productsWithImages.map((product) => (
+              <Product>
+                <Image src={product.image}/>
+                <ProductText>{product.name}</ProductText>
+                <ProductText>{product.color}</ProductText>
+                <ProductText>{product.price.symbol} {product.price.amount}</ProductText>
+              </Product>))}
         </Products>
     </Container>
   );
